@@ -7,7 +7,6 @@
 # @Software: PyCharm
 
 import tensorflow as tf
-import ssl
 import os
 
 os.environ["CUDA_VISIBLE_DEVICES"] = "1"
@@ -30,7 +29,7 @@ def get_feature_column():
     capital_loss = tf.feature_column.numeric_column("capital_loss")
     hour_per_work = tf.feature_column.numeric_column("hour_per_work")
 
-    #将离散出来的特征首先进行hash，hash得到的部分放入wide层，进行embedding，将embedding得到的部分放入deep层
+    #将离散出来的特征首先进行hash，hash得到的部分分别进入wide层和deep层，进deep层之前进行embedding，将embedding得到的部分放入deep层
     #hash_bucket_size=512的原因是离散出来的特征是不会超过512的
     work_class = tf.feature_column.categorical_column_with_hash_bucket("workclass",hash_bucket_size=512)
     education = tf.feature_column.categorical_column_with_hash_bucket("education",hash_bucket_size=512)
@@ -49,7 +48,7 @@ def get_feature_column():
         #年龄被分成了9段，收入被分成了4段，所以hash_bucket_size的结果就是9x4
         tf.feature_column.crossed_column([age_bucket,gain_bucket],hash_bucket_size=36),
         #收入和支出进行交叉，收入4段支出4段所以是16段
-        tf.feature_column.crossed_column([gain_bucket,loss_bucket],hash_bucket_size=36),
+        tf.feature_column.crossed_column([gain_bucket,loss_bucket],hash_bucket_size=16),
 
     ]
     # 定义一个数据结构存储hash和离散化的特征
@@ -74,7 +73,6 @@ def get_feature_column():
 
 def build_model_estimator(wide_column,deep_column,model_folder):
     """
-
     :param wide_column:
     :param deep_column:
     :param model_export_floder:
@@ -91,15 +89,17 @@ def build_model_estimator(wide_column,deep_column,model_folder):
         # 有的是控制学习率的方式，有的是控制参数梯度在本次迭代中影响的方式
         dnn_optimizer=tf.compat.v1.train.ProximalAdagradOptimizer(learning_rate=0.1,l1_regularization_strength=0.001,
                                                         l2_regularization_strength=0.001),
-        # 隐层的维度
-        # 隐层节点个数决定参数的整体维度
+
         # tf.feature_column.embedding_column(work_class, 9),  # 选9的意义是2的9次方是512可以涵盖我们的哈希
         # tf.feature_column.embedding_column(education, 9),
         # tf.feature_column.embedding_column(marital_status, 9),
         # tf.feature_column.embedding_column(occupation, 9),
         # tf.feature_column.embedding_column(relationship, 9),
+
+        # 隐层的维度
+        # 隐层节点个数决定参数的整体维度
         # 上面的这五个维度的特征有5x9个特征,45个特征与128个特征全连接，128与64全连接，依次类推
-        # 用45*128+128*64+64*32+32*16，，共约16000个参数，总需要16000乘以100，也就是160万的训练数据
+        # 用45*128+128*64+64*32+32*16，，共约16000个参数，总需要16000乘以100(为了保证样本数和特征数比值是100：1)，也就是160万的训练数据
         # 但实际只有3万的数据，所以要重复采样，重复采样55倍
         dnn_hidden_units=[128,64,32,16]
     )
@@ -140,14 +140,14 @@ def input_fn(data_file,re_time,shuffle,batch_num,predict):
 
     def parse_csv_predict(value):
         columns = tf.decode_csv(value,record_defaults=_CSV_COLUMN_DEFAULTS)
-        # 特征最终返回的是字典要注意key是特征名称 和稀疏featur可以理解成列表
+        # 特征最终返回的是字典要注意key是特 征名称 和稀疏featur可以理解成列表
         features = dict(zip(_CSV_COLUMNS,columns))
         labels =features.pop('label')
         return features
-    # 读文件过滤第一行.skip(1).同样过滤掉有？的行
     # fp=open(data_file)
     # for line in fp:
     #     print(line)
+    # 读文件过滤第一行.skip(1).同样过滤掉有？的行
     data_set = tf.data.TextLineDataset(data_file).skip(1)
 
     # data_set = tf.data.TextLineDataset(data_file)
@@ -170,7 +170,7 @@ def input_fn(data_file,re_time,shuffle,batch_num,predict):
         data_set = data_set.map(parse_csv,num_parallel_calls=5)
     #     重采样
     data_set =  data_set.repeat(re_time)
-    #     分割成batch
+    #     分割成batch用于训练和测试
     data_set = data_set.batch(batch_num)
     return data_set
 
@@ -184,9 +184,9 @@ def train_wd_model(model_es,train_file,test_file,model_export_floder,serving_inp
     :return:
     """
     total_run = 6
-    for index in range(total_run):#重采样
-        model_es.train(input_fn=lambda:input_fn(train_file,20,True,100,False))
-        model_es.evaluate(input_fn=lambda:input_fn(test_file,1,False,100,False))
+    # for index in range(total_run):#重采样
+    model_es.train(input_fn=lambda:input_fn(train_file,20,True,100,False))
+    model_es.evaluate(input_fn=lambda:input_fn(test_file,1,False,100,False))
     model_es.export_saved_model(model_export_floder,serving_input_fn)
 
 def get_test_label(test_file):
@@ -228,17 +228,21 @@ def test_model_performance(model_es,test_file):
     get_auc(predict_list,test_label)
 
 
-def run_main(train_file,test_file,model_floder,model_export_floder):
+def run_main(train_file,test_file,model_folder,model_export_floder):
     """
     :param train_file:
     :param test_file:
-    :param model_floder: origin model floder to put train model
-    :param model_export_floder: for tf serving
+    :param model_floder: origin model floder to put train model原始模型导出到的文件夹
+    :param model_export_floder: for tf serving为了提供给tf server做model server服务的调用的导出的文件夹
     """
+    # 获取wide侧特征和deep侧特征
     wide_column,deep_column = get_feature_column()
-    model_es,serving_input_fn=build_model_estimator(wide_column,deep_column,model_floder)
+    # 模型主体部分
+    model_es,serving_input_fn=build_model_estimator(wide_column,deep_column,model_folder)
+
     train_wd_model(model_es,train_file,test_file,model_export_floder,serving_input_fn)
-    test_model_performance(model_es,test_file)
+
+    # test_model_performance(model_es,test_file)
 
 if __name__ == "__main__":
     run_main("../data/train.txt","../data/test.txt","../data/wd","../data/wd_export")

@@ -1,7 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bde249e0-35c6-4e96-b18f-d318ed53db1a" name="Default Changelist" comment="" />
+    <list default="true" id="bde249e0-35c6-4e96-b18f-d318ed53db1a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/wd/checkpoint" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/wd/eval/events.out.tfevents.1565234468.admindeAir" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/wd/events.out.tfevents.1565234398.admindeAir" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/wd/graph.pbtxt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/wd/model.ckpt-13026.data-00000-of-00002" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/wd/model.ckpt-13026.data-00001-of-00002" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/wd/model.ckpt-13026.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/wd/model.ckpt-13026.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/wd/model.ckpt-19539.data-00000-of-00002" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/wd/model.ckpt-19539.data-00001-of-00002" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/wd/model.ckpt-19539.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/wd/model.ckpt-19539.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/wd/model.ckpt-26052.data-00000-of-00002" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/wd/model.ckpt-26052.data-00001-of-00002" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/wd/model.ckpt-26052.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/wd/model.ckpt-26052.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/wd/model.ckpt-32565.data-00000-of-00002" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/wd/model.ckpt-32565.data-00001-of-00002" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/wd/model.ckpt-32565.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/wd/model.ckpt-32565.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/wd/model.ckpt-39078.data-00000-of-00002" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/wd/model.ckpt-39078.data-00001-of-00002" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/wd/model.ckpt-39078.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/wd/model.ckpt-39078.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preduction/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/preduction/train.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,8 +41,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/preduction/train.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="13" lean-forward="true" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+            <state relative-caret-position="76">
+              <caret line="45" column="9" lean-forward="true" selection-start-line="45" selection-start-column="9" selection-end-line="45" selection-end-column="9" />
+              <folding>
+                <element signature="e#146#169#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -40,7 +71,12 @@
       <find>print</find>
       <find>ProximalAdagradOptimizer</find>
       <find>PR-</find>
+      <find>input_fn</find>
+      <find>build_tensor_info</find>
     </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -53,11 +89,12 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="690" />
+    <option name="x" value="42" />
     <option name="y" value="23" />
-    <option name="width" value="919" />
+    <option name="width" value="1398" />
     <option name="height" value="796" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -75,17 +112,6 @@
               <item name="WD" type="462c0819:PsiDirectoryNode" />
               <item name="data" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="WD" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WD" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-              <item name="wd_export" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="WD" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WD" type="462c0819:PsiDirectoryNode" />
-              <item name="preduction" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -94,6 +120,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/data" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -159,23 +186,23 @@
       <workItem from="1565151841704" duration="11151000" />
       <workItem from="1565167718552" duration="6673000" />
       <workItem from="1565177712145" duration="2454000" />
-      <workItem from="1565229545373" duration="6206000" />
+      <workItem from="1565229545373" duration="12386000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26484000" />
+    <option name="totallyTimeSpent" value="32664000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="690" y="23" width="919" height="796" extended-state="0" />
+    <frame x="42" y="23" width="1398" height="796" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4960212" weight="0.29166666" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4960212" visible="true" weight="0.097345136" />
       <window_info id="Structure" order="1" sideWeight="0.5039788" side_tool="true" weight="0.1928839" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49962035" weight="0.52117866" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49962035" weight="0.36079547" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39884394" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -184,7 +211,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5003796" side_tool="true" weight="0.4105263" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.2989378" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.29829547" />
       <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -197,7 +224,7 @@
     <option name="version" value="1" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/WD$train.coverage" NAME="train Coverage Results" MODIFIED="1565234391594" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/preduction" />
+    <SUITE FILE_PATH="coverage/WD$train.coverage" NAME="train Coverage Results" MODIFIED="1565262230063" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/preduction" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file:///anaconda2/envs/py36/lib/python3.6/site-packages/tensorflow_estimator/python/estimator/tpu/tpu_estimator.py">
@@ -228,10 +255,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file:///anaconda2/envs/py36/lib/python3.6/site-packages/tensorflow/contrib/eager/python/examples/rnn_ptb/rnn_ptb.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="230" column="9" selection-start-line="230" selection-start-column="9" selection-end-line="230" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/preduction/train.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="13" lean-forward="true" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        <state relative-caret-position="76">
+          <caret line="45" column="9" lean-forward="true" selection-start-line="45" selection-start-column="9" selection-end-line="45" selection-end-column="9" />
+          <folding>
+            <element signature="e#146#169#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
